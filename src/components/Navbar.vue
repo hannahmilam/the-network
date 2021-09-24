@@ -1,14 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-white px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/download.png"
-          height="45"
-        />
+         <router-link :to="{ name: 'Home' }" class="navbar-brand btn lighten-30 selectable text-uppercase">
+            The Network
+          </router-link>
       </div>
-    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -23,54 +19,26 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Profile' }" class="btn text-dark lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Profile' }" class="btn lighten-30 selectable text-uppercase">
             Profile
           </router-link>
         </li>
       </ul>
-      <span class="navbar-text">
-        <button
-          class="btn selectable text-dark lighten-30 text-uppercase my-2 my-lg-0"
-          @click="login"
-          v-if="!user.isAuthenticated"
-        >
-          Login
-        </button>
-
-        <div class="dropdown my-2 my-lg-0" v-else>
-          <div
-            class="dropdown-toggle selectable"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            id="authDropdown"
-          >
-            <img
-              :src="user.picture"
-              alt="user photo"
-              height="40"
-              class="rounded"
-            />
-            <span class="mx-3 text-dark lighten-30">{{ user.name }}</span>
-          </div>
-          <div
-            class="dropdown-menu p-0 list-group w-100"
-            aria-labelledby="authDropdown"
-          >
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Manage Account
-              </div>
-            </router-link>
-            <div
-              class="list-group-item list-group-item-action hoverable text-danger"
-              @click="logout"
-            >
-              <i class="mdi mdi-logout"></i>
-              logout
-            </div>
-          </div>
-        </div>
-      </span>
+  <form @submit.prevent="" class="bg-white rounded elevation-1">
+    <div class="form-group d-flex align-items-center">
+      <label for="search" class="sr-only"></label>
+      <input v-model="query"
+             type="text"
+             name="search"
+             required
+             class="form-control bg-white border-0"
+             placeholder="search"
+      >
+      <button class="btn px-2 py-0 selectable" type="submit">
+           <i class='mdi mdi-magnify'></i>
+      </button>
+    </div>
+   </form>
     </div>
   </nav>
 </template>
@@ -117,5 +85,8 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.search-bar{
+width: 15rem;
 }
 </style>

@@ -1,21 +1,27 @@
 <template>
-  <header>
+ <header>
     <Navbar />
   </header>
-  <main>
-    <router-view />
-  </main>
-  <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+  <main class="container-fluid">
+    <div class="row">
+      <Sidebar class="col-md-2" />
+   
+      <div class="col-md-8 viewport p-0">
+      
+        <router-view />
+        </div>
+           <Ads class="col-md-2" />
+      
     </div>
-  </footer>
+  </main>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+import Sidebar from './components/Sidebar.vue'
 export default {
+  components: { Sidebar },
   name: 'App',
   setup() {
     return {
@@ -26,5 +32,11 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+.sidebar{
+  height: 100vh;
+}
+.ads{
+  height: 100vh;
+}
 
 </style>
