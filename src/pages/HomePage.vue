@@ -7,6 +7,9 @@
     <div class="row justify-content-center">
      <Post v-for="p in posts" :key="p.id" :posts="p" />
     </div>
+    <footer>
+      <p class='text-center'>Prev | Next</p>
+    </footer>
 </div>
 </template>
 

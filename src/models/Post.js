@@ -6,5 +6,6 @@ this.imgUrl = postData.imgUrl
 this.likeIds = postData.likeIds
 this.creatorId = postData.creatorId
 this.creator = postData.creator || {}
+this.createdAt = postData.createdAt
   }
 }
