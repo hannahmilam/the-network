@@ -7,6 +7,7 @@ export const AppState = reactive({
 
 /** @type {import('.models/Post.js').Post[]} */
   posts: [],
-  post: null
+  post: null,
+  ads: []
   
 })
