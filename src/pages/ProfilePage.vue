@@ -8,8 +8,9 @@
           </div>
           <div class="card-body">
             <img :src="profile.picture" alt="" class="rounded-circle mt-2 profile-picture" height="45"> 
-            <b>{{ profile.name }}</b>
+          <p><b>{{ profile.name }}</b></p> <a :href="profile.resume"><i class="far fa-file-alt"></i></a> <a :href="profile.github"><i class="fab fa-github-square"></i></a> <a :href="profile.linkedin"><i class="fab fa-linkedin"></i></a>
             <p>{{ profile.bio }}</p>
+            <p>Class of {{ profile.class }}</p>
           </div>
         </div>
       </div>

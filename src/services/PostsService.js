@@ -17,10 +17,6 @@ async createPost(newPost){
   logger.log('create post', res)
   AppState.posts.unshift(new Post(res.data))
 }
-async editPost(post){
-  let res = await api.put(`api/posts/${post.id}`, post)
-  logger.log('edit post', res)
-}
 async deletePost(postId){
   await api.delete(`api/posts/${postId}`)
   AppState.post = null

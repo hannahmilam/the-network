@@ -1,6 +1,7 @@
 <template>
 <div class="col-10 mt-3">
 <div class="card shadow p-3">
+  <div class="card-header bg-white pb-4">
   <form @submit.prevent="createPost()">
     <div class="row">
       <div class="col-2 text-center">
@@ -14,28 +15,41 @@
              name="body"
              placeholder="What's on your mind..."
              v-model="editable.body"
-             required
+              required
       >
       </div>
     </div>
-    
     </div>
-    <div class="form-group">
-      <label for="title"><i class="far fa-images"></i> Photo/Video</label>
+  </form>
+  </div>
+ 
+    <div class="card-body">
+      <form @submit.prevent='createPost()'>
+        <div class="row">
+          <div class="col-6">
+    <i class="far fa-images selectable p-2" @click="showForm"> Photo/Video</i> 
+    <div class="form-group visually-hidden" id="imgUrl">
+      <label for="title"></label>
       <input type="url"
              class="form-control bg-light"
              name="imgUrl"
+             placeholder="add img url here..."
              v-model="editable.imgUrl"
-             required
+            
       >
     </div>
+    </div>
 
-      <div class="form-group">
+    <div class="col-6">
+      <div class="form-group text-end">
         <button type="submit" class="btn btn-primary">
           <i class="far fa-paper-plane selectable"></i>
         </button>
       </div>
+    </div>
+    </div>
   </form>
+      </div>
   </div>
   </div>
 </template>
@@ -63,6 +77,9 @@ async createPost(){
   Pop.toast('unable to create post', 'error')
   logger.log(error)
  }
+},
+showForm(){
+  document.getElementById('imgUrl').classList.toggle('visually-hidden')
 }
     }
   }
@@ -72,7 +89,7 @@ async createPost(){
 <style scoped lang="scss">
 .post-body{
   height: 5rem;
-  width: 25rem;
+  width: 30rem;
 }
 
 </style>

@@ -3,20 +3,29 @@
  <div class="card shadow" style="">
    <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == post.creatorId">
        <i class="mdi mdi-delete f-20 selectable" @click="deletePost()"></i>
-       <i class="mdi mdi-pencil f-20 selectable" @click="editPost()"></i>
         </div>
-          <div class="card-body">
-
+        <div class="card-header bg-white">
+          <div class="row">
+            <div class="col-2">
             <router-link :to="{name: 'Profile', params: {id: post.creatorId}}" class="selectable">
-            <img :src="post.creator.picture" alt="" class="rounded-circle mt-2" height="64"> <b>{{post.creator.name}}</b>
+              <img :src="post.creator.picture" alt="" class="rounded-circle mt-2" height="64">
              </router-link>
-             <p>
-             <small>
-              {{ new Date(post.updatedAt).toDateString() }} at {{ new Date(post.updatedAt).getHours() }}:{{ new Date(post.updatedAt).getMinutes() }}
+            </div>
+            <div class="col-10 pt-3">
+              <h6 class="m-0 p-0"><span>{{post.creator.name}}</span></h6>
+              <small>
+              {{ new Date(post.updatedAt).toDateString() }}
              </small>
-             </p>
+            </div>
             <p class="card-text ms-4 mt-3">{{post.body}}</p>
-            <img :src="post.imgUrl" class="rounded img-fluid" alt="...">
+          </div>
+        </div>
+
+          <div class="card-body m-0 p-0">
+            <img :src="post.imgUrl" class="rounded post-img" alt="...">
+          </div>
+          
+          <div class="card-footer text-end">
             <p class="mt-2">
           <i class="far fa-heart selectable text-danger" @click="likePost()">{{ post.likeIds.length }}</i>
         </p>
@@ -53,14 +62,6 @@ export default {
           logger.log(error)
         }
       },
-async editPost(){
-try {
-  await postsService.editPost()
-} catch (error) {
-  Pop.toast('unable to edit post', 'error')
-  logger.log(error)
-}
-},
 async likePost() {
     try {
       await postsService.likePost(props.post.id)
@@ -74,6 +75,8 @@ async likePost() {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.post-img{
+ width: 100%;
+}
 </style>
