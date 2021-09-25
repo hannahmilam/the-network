@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar bg-white text-center">
+  <div class="sidebar bg-white text-center hidden-text">
 <div>
   <Auth />
 </div>
@@ -12,6 +12,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
+ @media only screen and (max-width: 768px) {
+     .hidden-text {
+       display: none;
+     }
+ }
 </style>

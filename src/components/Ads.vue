@@ -1,5 +1,5 @@
 <template>
- <div class="col-12" v-if="ads[0] !=null">
+ <div class="col-12 hidden-text" v-if="ads[0] !=null">
   <img :src="ads[0].tall" class="img-fluid my-2" alt="">
   <img :src="ads[1].tall" class="img-fluid" alt="">
     </div>
@@ -35,6 +35,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
+ @media only screen and (max-width: 768px) {
+     .hidden-text {
+       display: none;
+     }
+ }
 </style>

@@ -1,17 +1,17 @@
 <template>
-<div class="col-10 p-3">
+<div class="col-md-10 p-3">
  <div class="card shadow" style="">
    <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == post.creatorId">
        <i class="mdi mdi-delete f-20 selectable" @click="deletePost()"></i>
         </div>
         <div class="card-header bg-white">
           <div class="row">
-            <div class="col-2">
+            <div class="col-md-2">
             <router-link :to="{name: 'Profile', params: {id: post.creatorId}}" class="selectable">
               <img :src="post.creator.picture" alt="" class="rounded-circle mt-2" height="64">
              </router-link>
             </div>
-            <div class="col-10 pt-3">
+            <div class="col-md-10 pt-3">
               <h6 class="m-0 p-0"><span>{{post.creator.name}}</span></h6>
               <small>
               {{ new Date(post.updatedAt).toDateString() }}

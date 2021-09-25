@@ -1,13 +1,13 @@
 <template>
-<div class="col-10 mt-3">
+<div class="col-md-10 mt-3">
 <div class="card shadow p-3">
   <div class="card-header bg-white pb-4">
   <form @submit.prevent="createPost()">
     <div class="row">
-      <div class="col-2 text-center">
+      <div class="col-md-2 text-center mb-2">
       <img :src="account.picture" alt="" class="rounded-circle" height="64">
       </div>
-      <div class="col-4">
+      <div class="col-md-10">
       <div class="form-group">
       <label for="body" class="sr-only">Post Body</label>
       <input type="text"
@@ -87,9 +87,9 @@ showForm(){
 </script>
 
 <style scoped lang="scss">
-.post-body{
-  height: 5rem;
-  width: 30rem;
-}
+// .post-body{
+//   height: 5rem;
+//   width: 30rem;
+// }
 
 </style>
