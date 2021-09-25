@@ -1,20 +1,25 @@
 <template>
 <div class="col-10 p-3">
  <div class="card shadow" style="">
-   <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == posts.creatorId">
+   <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id == post.creatorId">
        <i class="mdi mdi-delete f-20 selectable" @click="deletePost()"></i>
        <i class="mdi mdi-pencil f-20 selectable" @click="editPost()"></i>
         </div>
-          <div class="card-body pb-1">
-             <router-link :to="{name: 'Profile', params: {id: posts.creatorId}}" class="selectable">
-            <img :src="posts.creator.picture" alt="" class="rounded-circle mt-2" height="64"> <b>{{posts.creator.name}}</b>
+          <div class="card-body">
+
+            <router-link :to="{name: 'Profile', params: {id: post.creatorId}}" class="selectable">
+            <img :src="post.creator.picture" alt="" class="rounded-circle mt-2" height="64"> <b>{{post.creator.name}}</b>
              </router-link>
-            <p class="card-text ms-4 mt-3">{{posts.body}}</p>
-            <img :src="posts.imgUrl" class="rounded img-fluid" alt="...">
-           <h4 class="text-end text-danger mt-2 px-3">
-          <i class="far fa-heart selectable"></i>
-        <i class="fas fa-heart selectable visually-hidden"></i>
-      </h4>
+             <p>
+             <small>
+              {{ new Date(post.updatedAt).toDateString() }} at {{ new Date(post.updatedAt).getHours() }}:{{ new Date(post.updatedAt).getMinutes() }}
+             </small>
+             </p>
+            <p class="card-text ms-4 mt-3">{{post.body}}</p>
+            <img :src="post.imgUrl" class="rounded img-fluid" alt="...">
+            <p class="mt-2">
+          <i class="far fa-heart selectable text-danger" @click="likePost()">{{ post.likeIds.length }}</i>
+        </p>
     </div>
   </div>
 </div>
@@ -28,7 +33,7 @@ import Pop from '../utils/Pop.js'
 import { logger } from '../utils/Logger.js'
 export default {
   props: {
-    posts: {
+    post: {
       type: Object,
       required: true
     }
@@ -36,11 +41,12 @@ export default {
   setup(props) {
     return {
       account: computed(() => AppState.account),
+      posts: computed(() => AppState.posts),
       async deletePost() {
         try {
           const yes = await Pop.confirm('Are you sure you want to delete?')
           if(!yes){ return }
-          await postsService.deletePost(props.posts.id)
+          await postsService.deletePost(props.post.id)
           Pop.toast('Your post is deleted', 'success')
         } catch (error) {
           Pop.toast('unable to delete post', 'error')
@@ -54,6 +60,14 @@ try {
   Pop.toast('unable to edit post', 'error')
   logger.log(error)
 }
+},
+async likePost() {
+    try {
+      await postsService.likePost(props.post.id)
+      Pop.toast('Liked!', 'success')
+    } catch (error) {
+      logger.log('⚠ LIKE_POST', 'error')
+    }
 }
     }
   }

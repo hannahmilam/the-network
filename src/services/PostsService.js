@@ -26,5 +26,11 @@ async deletePost(postId){
   AppState.post = null
   AppState.posts.filter(p => p.id !== postId)
 }
+async likePost(id) {
+  await api.post(`api/posts/${id}/like`)
+  AppState.likes.filter((f)=> f.like)
+  
+    await this.getPosts()
+}
 }
 export const postsService = new PostsService()

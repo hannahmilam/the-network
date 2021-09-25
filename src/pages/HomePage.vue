@@ -5,7 +5,7 @@
     </div>
 
     <div class="row justify-content-center">
-     <Post v-for="p in posts" :key="p.id" :posts="p" />
+     <Post v-for="p in posts" :key="p.id" :post="p" />
     </div>
     <footer>
       <p class='text-center'>Prev | Next</p>
@@ -29,7 +29,8 @@ export default {
       }
     })
     return {
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      like: computed(() => AppState.likes)
     }
   }
 }

@@ -5,25 +5,14 @@
             The Network
           </router-link>
       </div>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'Profile' }" class="btn lighten-30 selectable text-uppercase">
-            Profile
-          </router-link>
-        </li>
-      </ul>
+  <div>
+     
+            <router-link class="btn btn-secondary" type="button" :to="{ name: 'Account' }">
+              Account
+            </router-link>
+          
+    </div>
+   <div>
   <form @submit.prevent="" class="bg-white rounded elevation-1">
     <div class="form-group d-flex align-items-center">
       <label for="search" class="sr-only"></label>
