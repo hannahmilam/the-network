@@ -29,7 +29,7 @@
       <form @submit.prevent='createPost()'>
         <div class="row">
           <div class="col-6">
-    <i class="far fa-images selectable p-2" title="Add Photos/Videos" @click="showForm"> Photo/Video</i> 
+    <i class="far fa-images selectable p-2" titile="Add Photos/Videos" @click="showForm"> Photo/Video</i> 
     <div class="form-group visually-hidden" id="imgUrl">
       <label for="title"></label>
       <input type="url"
@@ -44,9 +44,11 @@
 
     <div class="col-6">
       <div class="form-group text-end">
+          <button class="border-0">
         <h4>
-          <i class="far fa-paper-plane selectable post" title="post"></i>
+          <i class="far fa-paper-plane selectable post" type="submit" title="post"></i>
         </h4>
+        </button>
       </div>
     </div>
     </div>
@@ -67,32 +69,32 @@ import { AppState } from '../AppState'
 export default {
    props: {
     post: {
-      type: Object,
+      type:  Object,
       required: true
     }
   },
   setup(props) {
     const editable = ref({})
     return {
-account: computed(() => AppState.account),
-osts: computed(() => AppState.posts),
-editable,
-async createPost(){
- try {
+    account: computed(() => AppState.account),
+    osts: computed(() => AppState.posts),
+    editable,
+    async createPost(){
+    try {
     await postsService.createPost(editable.value)
     editable.value = {}
     Pop.toast('Post Added', 'success')
  } catch (error) {
   Pop.toast('unable to create post', 'error')
   logger.log(error)
- }
-},
-showForm(){
-  document.getElementById('imgUrl').classList.toggle('visually-hidden')
-}
+  }
+  },
+  showForm(){
+    document.getElementById('imgUrl').classList.toggle('visually-hidden')
+  }
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

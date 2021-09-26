@@ -38,10 +38,6 @@
     <div class="row justify-content-center">
       <Post v-for="p in posts" :key="p.id" :post="p" />
     </div>
-
-    <footer>
-      <OlderNewer />
-    </footer>
   </div>
 </template>
 

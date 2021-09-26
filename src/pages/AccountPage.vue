@@ -93,15 +93,17 @@ import { computed, ref, watchEffect } from 'vue'
 import { AppState } from '../AppState'
 import Pop from '../utils/Pop'
 import { accountService } from '../services/AccountService'
+import { Post } from '../models/Post'
+
 export default {
   name: 'Account',
   props: {
-    posts: {type: Object, default: true}
+    post: {type: Object, default: true}
   },
   setup(props) {
     const editable = ref({})
       watchEffect(() => {
-        editable.value = {...props.posts}
+        editable.value = {...props.post}
       })
 
     return {

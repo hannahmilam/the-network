@@ -6,14 +6,15 @@ import { api } from "./AxiosService"
 
 class PostsService{
 
-  async getPosts(query = {}) {
+  async getPosts(query = '') {
     AppState.posts = []
     const res = await api.get('api/posts' + convertToQuery(query))
     logger.log(res.data.posts)
     AppState.posts = res.data.posts.map(p => new Post(p))
   }
+
 async createPost(newPost){
-  let res = await api.post('api/posts', newPost)
+  const res = await api.post('api/posts', newPost)
   logger.log('create post', res)
   AppState.posts.unshift(new Post(res.data))
 }
@@ -23,16 +24,15 @@ async deletePost(postId) {
   AppState.posts = AppState.posts.filter(p => p.id !== postId)
 }
 async likePost(id) {
-  await api.post(`api/posts/${id}/like`)
-  AppState.likes.filter((f)=> f.like)
-  
-    await this.getPosts()
+  const res = await api.post(`api/posts/${id}/like`)
+  logger.log('likes', res.data.likes)
+  this.getPosts()
 }
 
 async getPreviousPage() {
   AppState.posts = []
   AppState.postsData = {}
-  AppState.currentPage++
+  AppState.currentPage--
   const res = await api.get(`api/posts?page=${AppState.currentPage}`)
   AppState.postsData = res.data
   AppState.posts = res.data.posts.map(p => new Post(p))
@@ -40,7 +40,7 @@ async getPreviousPage() {
 async getNextPage() {
   AppState.posts = []
   AppState.postsData = {}
-  AppState.currentPage--
+  AppState.currentPage++
   const res = await api.get(`api/posts?page=${AppState.currentPage}`)
   AppState.postsData = res.data
   AppState.posts = res.data.posts.map(p => new Post(p))

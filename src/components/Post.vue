@@ -27,7 +27,7 @@
           
           <div class="card-footer text-end">
             <p class="mt-2">
-          <i class="far fa-heart selectable text-danger" @click="likePost()">{{ post.likeIds.length }}</i>
+          <i class="far fa-heart selectable text-danger" @click="likePost()">{{ post.likes.length }}</i>
         </p>
     </div>
   </div>
@@ -40,6 +40,7 @@ import { AppState } from '../AppState.js'
 import { postsService } from '../services/PostsService.js'
 import Pop from '../utils/Pop.js'
 import { logger } from '../utils/Logger.js'
+import { Post } from '../models/Post'
 export default {
   props: {
     post: {
@@ -62,12 +63,13 @@ export default {
           logger.log(error)
         }
       },
-async likePost() {
+      async likePost() {
     try {
       await postsService.likePost(props.post.id)
       Pop.toast('Liked!', 'success')
     } catch (error) {
-      logger.log('⚠ LIKE_POST', 'error')
+      Pop.toast(error.message, 'error')
+      logger.log(error, 'error')
     }
 }
     }

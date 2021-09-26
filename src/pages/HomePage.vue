@@ -8,7 +8,12 @@
      <Post v-for="p in posts" :key="p.id" :post="p" />
     </div>
     <footer class="justify-content-center d-flex mb-3">
-       <OlderNewer />
+         <button :disabled="currentPage === 1" @click="getPreviousPage()" class="btn btn-primary selectable shadow me-2">
+          Previous
+        </button>
+        <button @click="getNextPage()" class="btn btn-primary slectable shadow ms-2">
+          Next
+        </button>
     </footer>
 </div>
 </template>
@@ -31,7 +36,25 @@ export default {
     return {
       posts: computed(() => AppState.posts),
       like: computed(() => AppState.likes),
-      post: computed(() => AppState.post)
+      post: computed(() => AppState.post),
+      currentPage: computed(() => AppState.currentPage),
+
+      async getPreviousPage() {
+        try {
+          await postsService.getPreviousPage()
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+          logger.log(error.message)
+        }
+      },
+      async getNextPage() {
+        try {
+          await postsService.getNextPage()
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+          logger.log(error.message)
+        }
+    }
   }
   }
 }
