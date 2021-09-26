@@ -3,6 +3,11 @@
     <div v-if="profile">
       <div class="row justify-content-center">
         <div class="card mt-3 p-0 shadow">
+          <div class="on-hover position-absolute" style="right: 1rem; top: 1rem" v-if="account.id === profile.id">
+            <router-link :to="{ name: 'Account' }">
+        <i class="mdi mdi-pencil f-20 selectable" title="Edit Your Profile"></i>
+            </router-link>
+        </div>
           <div class="card-header cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
             <img :src="profile.picture" alt="" class="rounded-circle mt-2 profile-picture" height="150">
           </div>
