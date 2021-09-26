@@ -10,7 +10,7 @@
       
         <router-view />
         </div>
-           <Ads class="col-md-2" />
+           <Bulletin class="col-md-2" />
       
     </div>
   </main>

@@ -3,7 +3,7 @@
   <div class="py-4">
     <div v-if="account.id">
       <div class="text-center">
-      <router-link :to="{ name: 'Account' }" class="btn selectable">
+      <router-link :to="{name: 'Profile', params: {id: account.id}}" class="btn selectable">
       <img :src="account.picture" alt="" title="Profile Picture" class="rounded-circle my-3" height="150">
       </router-link>
       
