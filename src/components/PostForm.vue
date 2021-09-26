@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-2 text-center mb-2">
         <router-link :to="{name: 'Profile', params: {id: account.id}}" class="btn selectable">
-      <img :src="account.picture" alt="" class="rounded-circle" height="64">
+      <img :src="account.picture" alt="" title="Profile Picture" class="rounded-circle" height="64">
         </router-link>
       </div>
       <div class="col-md-10">
@@ -29,7 +29,7 @@
       <form @submit.prevent='createPost()'>
         <div class="row">
           <div class="col-6">
-    <i class="far fa-images selectable p-2" @click="showForm"> Photo/Video</i> 
+    <i class="far fa-images selectable p-2" title="Add Photos/Videos" @click="showForm"> Photo/Video</i> 
     <div class="form-group visually-hidden" id="imgUrl">
       <label for="title"></label>
       <input type="url"
@@ -44,9 +44,9 @@
 
     <div class="col-6">
       <div class="form-group text-end">
-        <button type="submit" class="btn btn-primary">
-          <i class="far fa-paper-plane selectable"></i>
-        </button>
+        <h4>
+          <i class="far fa-paper-plane selectable post" title="post"></i>
+        </h4>
       </div>
     </div>
     </div>
@@ -96,5 +96,8 @@ showForm(){
 </script>
 
 <style scoped lang="scss">
-
+.post{
+  color: #9A99AD;
+  text-shadow: 2px 2px 4px #DAC4C7;
+}
 </style>

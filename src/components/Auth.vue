@@ -4,7 +4,7 @@
     <div v-if="account.id">
       <div class="text-center">
       <router-link :to="{ name: 'Account' }" class="btn selectable">
-      <img :src="account.picture" alt="" class="rounded-circle my-3" height="150">
+      <img :src="account.picture" alt="" title="Profile Picture" class="rounded-circle my-3" height="150">
       </router-link>
       
       </div>
@@ -21,13 +21,13 @@
 <br/>
 <br/>
 
-      <button class="btn selectable text-danger lighten-30" @click="logout" title="Logout">
+      <button class="btn selectable text-danger" @click="logout" title="Logout">
        <p class="selectable">Logout</p>
       </button>
     </div>
 
     <div v-else>
-      <button class="btn selectable text-success lighten-30" @click="login">
+      <button class="btn selectable" @click="login">
         <b>
           Login
         </b>
