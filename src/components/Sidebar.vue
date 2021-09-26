@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar bg-white hidden-text">
+  <div class="sidebar bg-white hidden-text ps-3">
 <div>
   <Auth />
 </div>

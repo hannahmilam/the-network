@@ -3,7 +3,9 @@
   <div class="py-4">
     <div v-if="account.id">
       <div class="text-center">
+      
       <img :src="account.picture" alt="" class="rounded-circle my-3" height="150">
+      
       </div>
       <br>
       <p class="text-secondary mb-0 pb-0"><small>{{ account.class}}</small></p>
@@ -39,8 +41,15 @@ import { AuthService } from '../services/AuthService.js'
 import { AppState } from '../AppState.js'
 import Pop from '../utils/Pop.js'
 export default {
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+    },
   setup() {
     return {
+      posts: computed(() => AppState.posts),
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
       async login() {
