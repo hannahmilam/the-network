@@ -16,42 +16,47 @@
           <p class="m-0 p-0">
           <small><em>Add/Edit Your Cover Image</em></small>
           </p>
-          <input type="text" v-model="account.coverImg">
+          <input type="text" v-model="editable.coverImg" placeholder="Cover Image">
           <br />
           <p class="m-0 p-0">
            <small class="m-0 small-0"><em>Add/Edit Your Name</em></small>
            </p>
-          <input type="text" v-model="account.name" smalllaceholder="Name">
+          <input type="text" v-model="editable.name" placeholder="Name">
             <br />
             <p class="m-0 p-0">
            <small><em>Add/Edit Your Profile Picture</em></small>
            </p>
-          <input type="text" v-model="account.picture" placholder="Picture">
+          <input type="text" v-model="editable.picture" placeholder="Profile Picture">
           <br />
           <p class="m-0 p-0">
           <small><em>Add/Edit Your Github Account</em></small>
           </p>
-          <input type="text" v-model="account.github" placeholder="Github">
+          <input type="text" v-model="editable.github" placeholder="Github">
           <br />
           <p class="m-0 p-0">
            <small><em> Add/Edit Your Linked In</em></small>
            </p>
-          <input type="text" v-model="account.linkedin" placeholder="Linkedin">
+          <input type="text" v-model="editable.linkedin" placeholder="Linkedin">
+          <br />
+          <p class="m-0 p-0">
+           <small><em> Add/Edit Your Resume</em></small>
+           </p>
+          <input type="text" v-model="editable.resume" placeholder="Resume">
           <br />
           <p class="m-0 p-0">
            <small><em>Add/Edit Your Class</em></small>
            </p>
-          <input type="text" v-model="account.class" placeholder="Class">
+          <input type="text" v-model="editable.class" placeholder="Class">
           <br />
           <p class="m-0 p-0">
           <small><em>Add/Edit If You Have Graduated</em></small>
           </p>
-          <input type="checkbox" v-model="account.graduated" placeholder="Graduate">
+          <input type="checkbox" v-model="editable.graduated" placeholder="Graduate">
           <br />
           <p class="m-0 p-0">
            <small><em>Add/Edit Your Bio</em></small>
            </p>
-          <textarea v-model="account.bio"
+          <textarea v-model="editable.bio"
                     type="text"
                     class="form-control"
                     name="body"
@@ -59,7 +64,7 @@
                     rows="5"
                     placeholder="About you...">
           </textarea>
-          <button class="btn btn-success mt-2">
+          <button class="btn btn-success ms-1">
             Submit
           </button>
         </form>
@@ -74,18 +79,28 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { AppState } from '../AppState'
 import Pop from '../utils/Pop'
 import { accountService } from '../services/AccountService'
 export default {
   name: 'Account',
-  setup() {
+  props: {
+    posts: {type: Object, default: true}
+  },
+  setup(props) {
+    const editable = ref({})
+      watchEffect(() => {
+        editable.value = {...props.posts}
+      })
+
     return {
-      account: computed(() => AppState.account),
+       account: computed(() => AppState.account),
+      editable,
       async updateAccount() {
         try {
-          await accountService.editAccount(account.value)
+          editable.value.id
+          await accountService.editAccount(editable.value)
           Pop.toast('Profile Updated!', 'success')
         } catch (error) {
           Pop.toast(error, 'error')
