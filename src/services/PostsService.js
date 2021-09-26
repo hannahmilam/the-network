@@ -26,7 +26,9 @@ async deletePost(postId) {
 async likePost(id) {
   const res = await api.post(`api/posts/${id}/like`)
   logger.log('likes', res.data.likes)
-  this.getPosts()
+  const i = AppState.posts.findIndex(p => p.id === id)
+  AppState.posts.splice(i, 1, new Post(res.data))
+  AppState.posts = [...AppState.posts]
 }
 
 async getPreviousPage() {
