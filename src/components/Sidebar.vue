@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar bg-white text-center hidden-text">
+  <div class="sidebar bg-white hidden-text">
 <div>
   <Auth />
 </div>
@@ -19,4 +19,7 @@ export default {
        display: none;
      }
  }
+  .sidebar{
+   font-family: 'Inter', sans-serif;
+  }
 </style>

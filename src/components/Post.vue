@@ -12,18 +12,18 @@
              </router-link>
             </div>
             <div class="col-md-10 pt-3">
-              <h6 class="m-0 p-0"><span>{{post.creator.name}}</span></h6>
+              <h6 class="m-0 p-0"><b>{{post.creator.name}}</b></h6>
               <small>
               {{ new Date(post.updatedAt).toDateString() }}
              </small>
             </div>
-            <p class="card-text ms-4 mt-3">{{post.body}}</p>
+            <p class="card-text mt-3 caption">{{post.body}}</p>
           </div>
         </div>
 
-          <div class="card-body m-0 p-0">
+          <div class="card-body m-0 p-0"  v-if="post.imgUrl">
             <img :src="post.imgUrl" class="rounded post-img" alt="...">
-          </div>
+            </div>
           
           <div class="card-footer text-end">
             <p class="mt-2">
@@ -78,5 +78,8 @@ async likePost() {
 <style scoped lang="scss">
 .post-img{
  width: 100%;
+}
+.caption{
+  word-wrap: break-word;
 }
 </style>

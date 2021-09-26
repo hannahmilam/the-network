@@ -13,8 +13,7 @@ export const AppState = reactive({
   user: {},
   account: {},
   profile: {},
-  next: '',
-  previous: '',
-  current: 1
-  
+  currentPage: 1,
+  postData: {},
+  search: []
 })

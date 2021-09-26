@@ -2,7 +2,7 @@ export class Post{
   constructor(postData){
 this.id = postData.id
 this.body = postData.body
-this.imgUrl = postData.imgUrl || {}
+this.imgUrl = postData.imgUrl || ''
 this.likes = postData.likes
 this.likeIds = postData.likeIds
 this.creatorId = postData.creatorId
