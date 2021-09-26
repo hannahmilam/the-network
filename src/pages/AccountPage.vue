@@ -130,7 +130,7 @@ export default {
 .profile-picture{
 position: relative;
 bottom: -5em;
-border: solid #31b0b4c7;
+border: solid #DAC4C7;
 }
 
 .images{

@@ -1,12 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white px-3 justify-content-between">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white px-3">
       <div class="d-flex flex-column align-items-center">
          <router-link :to="{ name: 'Home' }" class="navbar-brand btn lighten-30 selectable text-uppercase">
-            The Network
+            <h1 class="title">The Network <i class="fas fa-paper-plane fa-lg logo"></i></h1>
           </router-link>
       </div>
  
-        <div>
+        <div class="ms-5">
           <Search />
         </div> 
 
@@ -117,5 +117,11 @@ a:hover {
 }
 .search-bar{
 width: 15rem;
+}
+.logo{
+  color: #9A99AD;
+}
+.title{
+  text-shadow: 2px 2px 4px #DAC4C7;
 }
 </style>

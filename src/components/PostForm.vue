@@ -96,9 +96,5 @@ showForm(){
 </script>
 
 <style scoped lang="scss">
-// .post-body{
-//   height: 5rem;
-//   width: 30rem;
-// }
 
 </style>

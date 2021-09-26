@@ -38,5 +38,10 @@ export default {
 .ads{
   height: 100vh;
 }
+main{
+background: #dac4c7;
+background: linear-gradient(90deg, #dac4c7 0%, #9a99ad 100%);
+// background-image: url('https://images.unsplash.com/photo-1519750783826-e2420f4d687f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80');
+}
 
 </style>
