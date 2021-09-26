@@ -5,7 +5,9 @@
   <form @submit.prevent="createPost()">
     <div class="row">
       <div class="col-md-2 text-center mb-2">
+        <router-link :to="{name: 'Profile', params: {id: account.id}}" class="btn selectable">
       <img :src="account.picture" alt="" class="rounded-circle" height="64">
+        </router-link>
       </div>
       <div class="col-md-10">
       <div class="form-group">
@@ -63,10 +65,17 @@ import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 
 export default {
-  setup() {
+   props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
     const editable = ref({})
     return {
 account: computed(() => AppState.account),
+osts: computed(() => AppState.posts),
 editable,
 async createPost(){
  try {
