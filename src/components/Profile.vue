@@ -19,11 +19,9 @@
         Please Wait...
       </h4>
     </div>
-    <div class="row justify-content-center" v-if="posts.length > 0">
+      <PostForm />
+    <div class="row justify-content-center">
       <Post v-for="p in posts" :key="p.id" :post="p" />
-    </div>
-    <div class="row" v-else>
-      <h3>Sorry, this user has not posted anything</h3>
     </div>
   </div>
 </template>
