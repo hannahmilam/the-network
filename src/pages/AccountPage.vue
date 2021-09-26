@@ -1,7 +1,7 @@
 <template>
   <div class="container">
    <div class="row justify-content-center">
-        <div class="card m-0 p-0 shadow">
+        <div class="card mt-3 p-0 shadow">
           <div class="card-header cover-img" :style="{backgroundImage: `url(${account.coverImg})`}">
             <img :src="account.picture" alt="" class="rounded-circle mt-2 profile-picture" height="150">
           </div>
@@ -80,7 +80,7 @@
                     rows="5"
                     placeholder="About you...">
           </textarea>
-          <button class="btn btn-success ms-1">
+          <button class="btn m-1 selectable">
             Submit
           </button>
         </form>
@@ -138,5 +138,9 @@ border: solid #DAC4C7;
 }
 a{
   color: rgb(27, 26, 26);
+}
+.btn{
+  background-color: #aba0cea1;
+  backdrop-filter: blur(10px);
 }
 </style>

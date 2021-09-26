@@ -2,7 +2,7 @@
    <div class="container-fluid">
     <div v-if="profile">
       <div class="row justify-content-center">
-        <div class="card m-0 p-0 shadow">
+        <div class="card mt-3 p-0 shadow">
           <div class="card-header cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
             <img :src="profile.picture" alt="" class="rounded-circle mt-2 profile-picture" height="150">
           </div>
