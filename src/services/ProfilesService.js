@@ -1,4 +1,5 @@
 import { AppState } from '../AppState'
+import { Post } from '../models/Post'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 

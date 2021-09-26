@@ -4,17 +4,18 @@ import { reactive } from 'vue'
 export const AppState = reactive({
   user: {},
   account: {},
+  search: [],
 
 /** @type {import('.models/Post.js').Post[]} */
   posts: [],
   post: null,
-  ads: [],
   likes: [],
   user: {},
   account: {},
-  profile: {},
-  currentPage: 1,
-  totalPages: 1,
   postData: {},
-  search: []
+  currentPage: 1,
+  /**@type {import('.model/Ad.js').Ad[]} */
+  ads: [],
+  /**@type {import('.model/Profile.js').Profile} */
+  profile: {},
 })

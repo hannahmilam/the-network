@@ -42,12 +42,6 @@ import { AuthService } from '../services/AuthService.js'
 import { AppState } from '../AppState.js'
 import Pop from '../utils/Pop.js'
 export default {
-  props: {
-    post: {
-      type: Object,
-      required: true
-    }
-    },
   setup() {
     return {
       posts: computed(() => AppState.posts),

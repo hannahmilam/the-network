@@ -98,7 +98,9 @@ import { Post } from '../models/Post'
 export default {
   name: 'Account',
   props: {
-    post: {type: Object, default: true}
+    post: 
+    {type: Object, 
+    default: true}
   },
   setup(props) {
     const editable = ref({})

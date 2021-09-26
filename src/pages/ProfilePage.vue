@@ -19,15 +19,14 @@ import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
 import { profilesService } from '../services/ProfilesService'
 import { useRoute } from 'vue-router'
+
+
 export default {
   setup() {
    const route = useRoute()
-   const query = ref('')
     return {
-    query,
     currentPage: computed(() => AppState.currentPage),
-    totalPages: computed(() => AppState.totalPages),
-      async getPreviousPage(page) {
+      async getPreviousPage() {
         try {
           await profilesService.getPreviousPage(route.params.id)
         } catch (error) {
@@ -35,9 +34,9 @@ export default {
           logger.log(error.message)
         }
       },
-      async getNextPage(page) {
+      async getNextPage() {
         try {
-          await profileService.getNextPage(route.params.id)
+          await profilesService.getNextPage(route.params.id)
         } catch (error) {
           Pop.toast(error, 'error')
           logger.log(error.message)

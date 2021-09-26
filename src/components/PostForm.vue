@@ -67,13 +67,7 @@ import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 
 export default {
-   props: {
-    post: {
-      type:  Object,
-      required: true
-    }
-  },
-  setup(props) {
+  setup() {
     const editable = ref({})
     return {
     account: computed(() => AppState.account),
