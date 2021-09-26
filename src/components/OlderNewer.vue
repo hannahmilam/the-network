@@ -1,40 +1,40 @@
 <template>
-  <div v-if="pagepost.newer !== null">
-    <button class="btn btn-light" @click="decrease">
-      ‹ Newer
-    </button>
-  </div>
-  <div v-if="page.older !== null">
-    <p class="selectable" @click="increase">
-      Older ›
-    </p>
-  </div>
+  <button :disabled="currentPage === 1" @click="getPreviousPage()" class="btn border-none selectable shadow me-2">
+          Previous
+        </button>
+        <button @click="getNextPage()" class="btn border-none shadow ms-2">
+          Next
+        </button>
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
 import { postsService } from '../services/PostsService'
 import { logger } from '../utils/Logger'
-let i = 1
+import { AppState } from '../AppState'
 export default {
-  props: {
-    page: {
-      type: Object,
-      required: true
-    }
-  },
   setup() {
     return {
-      async next() {
-        i++
-        await postsService.getPage(i)
+      currentPage: computed(() => AppState.currentPage),
+
+      async getPreviousPage() {
+        try {
+          await postsService.getPreviousPage()
+        } catch (error) {
+          Pop.toast('unable to get previous page', error)
+          logger.log(error.message)
+        }
       },
-      async previous() {
-        i--
-        await postsService.getPage(i)
-        logger.log(i)
+      async getNextPage() {
+        try {
+          await postsService.getNextPage()
+        } catch (error) {
+          Pop.toast('unable to get next page', error)
+          logger.log(error.message)
+        }
+    }
       }
     }
-  }
 }
 </script>
 
