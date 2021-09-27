@@ -25,11 +25,14 @@
             <img :src="post.imgUrl" class="rounded post-img" alt="...">
             </div>
           
-          <div class="card-footer text-end">
-            <p class="mt-2">
-          <i class="far fa-heart selectable text-danger" @click="likePost()">{{ post.likes.length }}</i>
-        </p>
-    </div>
+        <div class="card-footer text-end">
+        <p><i class="far fa-heart selectable text-danger" @click="likePost()"> {{ post.likes.length }}</i></p>
+         </div>
+         <!-- TODO make it so that when a user likes a post, it changes to a solid red heart, and when the user didn't like it then the heart is outlined -->
+        <!-- <div class="card-footer text-end" v-else>
+        <p class="mt-2"><i class="fas fa-heart selectable text-danger" @click="likePost()"> {{ post.likes.length }}</i></p>
+        </div> -->
+
   </div>
 </div>
 </template>

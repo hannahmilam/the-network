@@ -97,19 +97,15 @@ import { Post } from '../models/Post'
 
 export default {
   name: 'Account',
-  props: {
-    post: 
-    {type: Object, 
-    default: true}
-  },
-  setup(props) {
+  setup() {
+    const account = computed(() => AppState.account)
     const editable = ref({})
       watchEffect(() => {
-        editable.value = {...props.post}
+        editable.value = {...account.value}
       })
 
     return {
-       account: computed(() => AppState.account),
+      account,
       editable,
       async updateAccount() {
         try {
